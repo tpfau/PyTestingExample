@@ -39,6 +39,7 @@ jobs:
       run: |
         pytest --cov-report "xml:coverage.xml"  --cov=.
     - name: Pytest coverage comment
+      if: ${{ github.event_name == 'pull_request' }}
       uses: MishaKav/pytest-coverage-comment@main
       with:
         pytest-xml-coverage-path: ./coverage.xml
